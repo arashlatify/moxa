@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOXA — Digital Skills for Everyone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --moxa-ink:   #0d0d0d;
+      --moxa-cream: #f5f0e8;
+      --moxa-gold:  #c8a96e;
+      --moxa-gold-lt:#e8d5a8;
+      --moxa-white: #fdfcfa;
+      --moxa-muted: #6b6355;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--moxa-white); color: var(--moxa-ink); overflow-x: hidden; }
+
+    /* ── NAVBAR ── */
+    .moxa-nav { background: var(--moxa-ink); padding: .9rem 0; border-bottom: 1px solid rgba(200,169,110,.2); }
+    .moxa-nav .navbar-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+    .moxa-nav .brand-logo { width: 38px; height: 38px; object-fit: contain; }
+    .moxa-nav .brand-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--moxa-gold); letter-spacing: 3px; text-transform: uppercase; }
+    .moxa-nav .nav-link { font-size: .8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--moxa-cream) !important; padding: .5rem 1rem; position: relative; transition: color .3s; }
+    .moxa-nav .nav-link::after { content: ''; position: absolute; bottom: 2px; left: 50%; right: 50%; height: 1px; background: var(--moxa-gold); transition: left .3s, right .3s; }
+    .moxa-nav .nav-link:hover, .moxa-nav .nav-link.active { color: var(--moxa-gold) !important; }
+    .moxa-nav .nav-link:hover::after, .moxa-nav .nav-link.active::after { left: 1rem; right: 1rem; }
+    .navbar-toggler { border-color: var(--moxa-gold); }
+    .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c8a96e' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+    /* ── HERO ── */
+    .hero { background: var(--moxa-ink); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero-deco { position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: clamp(12rem,22vw,22rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(200,169,110,.09); line-height: 1; user-select: none; pointer-events: none; }
+    .hero-eyebrow { font-size: .72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--moxa-gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .75rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--moxa-gold); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem,7vw,6.5rem); font-weight: 900; line-height: 1.05; color: var(--moxa-cream); }
+    .hero h1 span { color: var(--moxa-gold); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; font-weight: 300; color: rgba(245,240,232,.6); max-width: 480px; line-height: 1.85; margin: 2rem 0; }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(200,169,110,.2); flex-wrap: wrap; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--moxa-gold); }
+    .stat-label { font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,.4); margin-top: .2rem; }
+
+    /* ── BUTTONS ── */
+    .btn-moxa { background: var(--moxa-gold); color: var(--moxa-ink); font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: .85rem 2.4rem; border: none; border-radius: 0; transition: background .3s, transform .2s; text-decoration: none; display: inline-block; }
+    .btn-moxa:hover { background: var(--moxa-gold-lt); color: var(--moxa-ink); transform: translateY(-2px); }
+    .btn-moxa-outline { background: transparent; color: var(--moxa-gold); font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: .85rem 2.4rem; border: 1px solid var(--moxa-gold); border-radius: 0; transition: all .3s; text-decoration: none; display: inline-block; }
+    .btn-moxa-outline:hover { background: var(--moxa-gold); color: var(--moxa-ink); transform: translateY(-2px); }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap { background: var(--moxa-gold); overflow: hidden; padding: .6rem 0; }
+    .marquee-track { display: flex; white-space: nowrap; animation: marquee 22s linear infinite; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 1.25rem; padding: 0 2rem; font-size: .7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--moxa-ink); }
+    .marquee-dot { width: 5px; height: 5px; background: var(--moxa-ink); border-radius: 50%; display: inline-block; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip { background: var(--moxa-cream); padding: 6rem 0; }
+    .about-strip .lead { font-size: 1.1rem; font-weight: 300; line-height: 1.9; color: var(--moxa-muted); }
+    .about-visual { background: var(--moxa-ink); height: 420px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .about-visual-letter { font-family: 'Playfair Display', serif; font-size: 9rem; font-weight: 900; color: var(--moxa-gold); opacity: .15; }
+    .about-quote { position: absolute; bottom: -1.5rem; left: -1.5rem; background: var(--moxa-gold); color: var(--moxa-ink); padding: 1.4rem; font-family: 'Playfair Display', serif; font-size: .88rem; font-style: italic; max-width: 185px; line-height: 1.55; }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights { background: var(--moxa-ink); padding: 6rem 0; }
+    .highlight-card { border: 1px solid rgba(200,169,110,.2); padding: 2.5rem 2rem; transition: border-color .3s, transform .3s; position: relative; overflow: hidden; height: 100%; }
+    .highlight-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--moxa-gold); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+    .highlight-card:hover { border-color: rgba(200,169,110,.55); transform: translateY(-4px); }
+    .highlight-card:hover::before { transform: scaleX(1); }
+    .highlight-icon { font-size: 2rem; color: var(--moxa-gold); margin-bottom: 1.5rem; }
+    .highlight-card h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--moxa-cream); margin-bottom: .75rem; }
+    .highlight-card p { font-size: .88rem; font-weight: 300; color: rgba(245,240,232,.5); line-height: 1.8; }
+    .card-link { color: var(--moxa-gold); font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; transition: gap .2s; }
+    .card-link:hover { gap: .85rem; color: var(--moxa-gold-lt); }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--moxa-cream); padding: 5.5rem 0; text-align: center; }
+    .cta-section p { font-size: 1rem; font-weight: 300; color: var(--moxa-muted); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.9; }
+
+    /* ── SECTION LABELS ── */
+    .section-label { font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--moxa-gold); margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.25rem); font-weight: 900; line-height: 1.15; }
+    .section-title-dark { color: var(--moxa-ink); }
+    .section-title-light { color: var(--moxa-cream); }
+
+    /* ── FOOTER ── */
+    .moxa-footer { background: var(--moxa-ink); padding: 3.5rem 0 2rem; border-top: 1px solid rgba(200,169,110,.15); }
+    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--moxa-gold); letter-spacing: 3px; text-transform: uppercase; }
+    .footer-tagline { font-size: .78rem; color: rgba(245,240,232,.3); margin-top: .3rem; letter-spacing: 1px; }
+    .footer-desc { color: rgba(245,240,232,.35); font-size: .82rem; line-height: 1.8; margin-top: 1rem; max-width: 260px; }
+    .footer-heading { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--moxa-gold); margin-bottom: 1.2rem; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: .55rem; }
+    .footer-links a { color: rgba(245,240,232,.45); font-size: .85rem; text-decoration: none; transition: color .3s; }
+    .footer-links a:hover { color: var(--moxa-gold); }
+    .footer-divider { border-color: rgba(200,169,110,.12); margin: 2rem 0 1.5rem; }
+    .footer-copy { font-size: .73rem; color: rgba(245,240,232,.22); letter-spacing: 1px; }
+
+    /* ── SCROLL REVEAL ── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 767px) { .hero-deco { display: none; } .about-quote { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="moxa-nav navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="image/MOXA-logo.png" alt="MOXA Logo" class="brand-logo" onerror="this.style.display='none'">
+      <span class="brand-name">MOXA</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-deco">M</div>
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-8 col-xl-7">
+        <div class="hero-eyebrow">Youth-Led Initiative</div>
+        <h1>Building<br/><span>Digital Skills</span><br/>For Everyone.</h1>
+        <p class="hero-sub">MOXA creates supportive learning spaces where beginners explore technology, gain confidence, and develop real-world digital skills at their own pace.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="services.html" class="btn-moxa">Explore Services</a>
+          <a href="about.html" class="btn-moxa-outline">Our Story</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">100%</div><div class="stat-label">Beginner Friendly</div></div>
+          <div><div class="stat-num">3+</div><div class="stat-label">Core Programs</div></div>
+          <div><div class="stat-num">Youth</div><div class="stat-label">Led & Driven</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Digital Literacy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Practical Workshops <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Beginner Friendly <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Youth Led <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Build Confidence <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Real Skills <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Digital Literacy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Practical Workshops <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Beginner Friendly <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Youth Led <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Build Confidence <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Real Skills <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ══ ABOUT STRIP ══ -->
+<section class="about-strip">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-up">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-title section-title-dark mb-4">A community built on<br/><em>curiosity & growth.</em></h2>
+        <p class="lead mb-4">MOXA is a youth-led educational initiative focused on helping students build essential digital skills in a simple and supportive way. We create learning spaces where beginners can explore technology, gain confidence, and improve their ability to use digital tools in everyday life.</p>
+        <a href="about.html" class="btn-moxa">Learn More About Us</a>
+      </div>
+      <div class="col-lg-5 offset-lg-1 fade-up">
+        <div class="about-visual">
+          <span class="about-visual-letter">M</span>
+          <div class="about-quote">"Confidence starts with the basics."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HIGHLIGHTS ══ -->
+<section class="highlights">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 fade-up">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title section-title-light">Three pillars of<br/><em style="color:var(--moxa-gold)">digital empowerment.</em></h2>
+      </div>
+      <div class="col-lg-5 offset-lg-1 d-flex align-items-end fade-up">
+        <p style="font-size:.88rem; font-weight:300; color:rgba(245,240,232,.42); line-height:1.9;">Every program is designed from the ground up with the beginner in mind — practical, accessible, and built to last.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 fade-up">
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="bi bi-laptop"></i></div>
+          <h4>Practical Workshops</h4>
+          <p>Hands-on sessions that teach real digital skills you can use immediately — no jargon, no fluff.</p>
+          <a href="services.html" class="card-link">View Services <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up" style="transition-delay:.1s">
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="bi bi-people"></i></div>
+          <h4>Beginner Environment</h4>
+          <p>A welcoming, pressure-free space where every question is valid and every step forward is celebrated.</p>
+          <a href="about.html" class="card-link">Our Approach <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up" style="transition-delay:.2s">
+        <div class="highlight-card">
+          <div class="highlight-icon"><i class="bi bi-stars"></i></div>
+          <h4>Confidence & Real Skills</h4>
+          <p>We don't just teach tools — we build the confidence to keep learning long after the workshop ends.</p>
+          <a href="contact.html" class="card-link">Get Involved <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="container fade-up">
+    <p class="section-label">Ready to Start?</p>
+    <h2 class="section-title section-title-dark mb-3">Your digital journey<br/>begins <em>here.</em></h2>
+    <p>Whether you're a student, a parent, or someone who simply wants to feel more confident with technology — MOXA has a place for you.</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="contact.html" class="btn-moxa">Contact Us</a>
+      <a href="services.html" class="btn-moxa-outline" style="border-color:var(--moxa-ink);color:var(--moxa-ink);" onmouseover="this.style.background='var(--moxa-ink)';this.style.color='var(--moxa-cream)'" onmouseout="this.style.background='transparent';this.style.color='var(--moxa-ink)'">See All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="moxa-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <img src="image/MOXA-logo.png" alt="MOXA" width="30" onerror="this.style.display='none'">
+          <div class="footer-brand-name">MOXA</div>
+        </div>
+        <div class="footer-tagline">Digital Skills for Everyone</div>
+        <p class="footer-desc">A youth-led educational initiative building digital confidence one student at a time.</p>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-2">
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:moxa.ma25@gmail.com"><i class="bi bi-envelope me-2"></i>moxa.ma25@gmail.com</a></li>
+          <li><a href="tel:+93700904563"><i class="bi bi-telephone me-2"></i>+93 700 904 563</a></li>
+          <li><a href="https://www.instagram.com/p/DTAMtM6DdrY/" target="_blank"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/moxa2025/" target="_blank"><i class="bi bi-linkedin me-2"></i>LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="footer-copy mb-0">© 2026 MOXA. All rights reserved For ITC students Group 3.</p>
+      <p class="footer-copy mb-0">Kabul, Afghanistan · Youth-led · Community-driven</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
