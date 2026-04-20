@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — MOXA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --moxa-ink:   #0d0d0d;
+      --moxa-cream: #f5f0e8;
+      --moxa-gold:  #c8a96e;
+    }
+    .moxa-nav { background: var(--moxa-ink); padding: .9rem 0; border-bottom: 1px solid rgba(200,169,110,.2); }
+    .moxa-nav .navbar-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+    .moxa-nav .brand-logo { width: 38px; height: 38px; object-fit: contain; }
+    .moxa-nav .brand-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--moxa-gold); letter-spacing: 3px; text-transform: uppercase; }
+    .moxa-nav .nav-link { font-size: .8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--moxa-cream) !important; padding: .5rem 1rem; position: relative; transition: color .3s; }
+    .moxa-nav .nav-link::after { content: ''; position: absolute; bottom: 2px; left: 50%; right: 50%; height: 1px; background: var(--moxa-gold); transition: left .3s, right .3s; }
+    .moxa-nav .nav-link:hover, .moxa-nav .nav-link.active { color: var(--moxa-gold) !important; }
+    .moxa-nav .nav-link:hover::after, .moxa-nav .nav-link.active::after { left: 1rem; right: 1rem; }
+    .navbar-toggler { border-color: var(--moxa-gold); }
+    .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c8a96e' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+    .moxa-footer { background: var(--moxa-ink); padding: 3.5rem 0 2rem; border-top: 1px solid rgba(200,169,110,.15); }
+    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--moxa-gold); letter-spacing: 3px; text-transform: uppercase; }
+    .footer-tagline { font-size: .78rem; color: rgba(245,240,232,.3); margin-top: .3rem; letter-spacing: 1px; }
+    .footer-desc { color: rgba(245,240,232,.35); font-size: .82rem; line-height: 1.8; margin-top: 1rem; max-width: 260px; }
+    .footer-heading { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--moxa-gold); margin-bottom: 1.2rem; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: .55rem; }
+    .footer-links a { color: rgba(245,240,232,.45); font-size: .85rem; text-decoration: none; transition: color .3s; }
+    .footer-links a:hover { color: var(--moxa-gold); }
+    .footer-divider { border-color: rgba(200,169,110,.12); margin: 2rem 0 1.5rem; }
+    .footer-copy { font-size: .73rem; color: rgba(245,240,232,.22); letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+
+<!-- MOXA NAVBAR -->
+<nav class="moxa-nav navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="image/MOXA-logo.png" alt="MOXA Logo" class="brand-logo" onerror="this.style.display='none'">
+      <span class="brand-name">MOXA</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- YOUR ORIGINAL CONTENT — UNCHANGED -->
+<div class="container text-center mt-5">
+  <h2>Contact Us</h2>
+  <h5 class="mt-3">Get in Touch</h5>
+  <p class="mb-4">
+    If you have any questions or would like to join our programs, please feel free to contact us.
+    We are always happy to assist you and look forward to hearing from you.
+  </p>
+  <a href="tel:+93700904563" class="btn btn-primary d-block mb-2">Phone: +93 700904563</a>
+  <a href="mailto:moxa.ma25@gmail.com" class="btn btn-primary d-block mb-2">Email</a>
+  <a href="https://www.instagram.com/p/DTAMtM6DdrY/?igsh=MW44ZzhlaDBidGo4aA==" target="_blank" class="btn btn-primary d-block mb-2">Instagram</a>
+  <a href="https://whatsapp.com/channel/0029Vb6cNx99sBI9Sd2rnX1g" target="_blank" class="btn btn-primary d-block mb-2">WhatsApp Channel</a>
+  <a href="https://www.linkedin.com/company/moxa2025/" target="_blank" class="btn btn-primary d-block mb-4">LinkedIn</a>
+</div>
+
+<!-- MOXA FOOTER -->
+<footer class="moxa-footer mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <img src="image/MOXA-logo.png" alt="MOXA" width="30" onerror="this.style.display='none'">
+          <div class="footer-brand-name">MOXA</div>
+        </div>
+        <div class="footer-tagline">Digital Skills for Everyone</div>
+        <p class="footer-desc">A youth-led educational initiative building digital confidence one student at a time.</p>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-2">
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:moxa.ma25@gmail.com"><i class="bi bi-envelope me-2"></i>moxa.ma25@gmail.com</a></li>
+          <li><a href="tel:+93700904563"><i class="bi bi-telephone me-2"></i>+93 700 904 563</a></li>
+          <li><a href="https://www.instagram.com/p/DTAMtM6DdrY/" target="_blank"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/moxa2025/" target="_blank"><i class="bi bi-linkedin me-2"></i>LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="footer-copy mb-0">© 2026 MOXA. All rights reserved.</p>
+      <p class="footer-copy mb-0">Kabul, Afghanistan · Youth-led · Community-driven</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
